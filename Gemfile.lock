@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/zakirstage/validatable.git
-  revision: 40bbd59605ba0ee832b0704aac54be784f00093c
+  revision: 2d7aa9be98542267567881ed6608e898db4ebdcc
   specs:
     jnunemaker-validatable (1.8.4)
       activesupport (>= 2.3.4)
@@ -32,7 +32,7 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport (>= 2.3.8)
-  jnunemaker-validatable (~> 1.8.4)!
+  jnunemaker-validatable!
   rake
   rspec
   uuid (>= 2.3.1)
