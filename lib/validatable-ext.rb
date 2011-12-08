@@ -22,7 +22,7 @@ module Validatable
     #     * if - A block that when executed must return true of the validation will not occur
     #     * group - The group that this validation belongs to.  A validation can belong to multiple groups
     def validates_inclusion_of(*args)
-      add_validations(args, ValidatesInclusionOf)
+      #add_validations(args, ValidatesInclusionOf)
     end
   end
 end
