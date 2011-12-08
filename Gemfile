@@ -1,4 +1,12 @@
-source "http://rubygems.org"
+# Source gems from the default public repository
+source :rubygems
 
-# Specify your gem's dependencies in sage_pay.gemspec
-gemspec
+gem 'activesupport', '>= 2.3.8'
+#gem 'validatable',   '>= 1.6.7'
+gem "jnunemaker-validatable", :git => 'git://github.com/zakirstage/validatable.git'
+gem 'uuid',          '>= 2.3.1'
+
+group :development do
+  gem 'rake'
+  gem 'rspec'
+end
