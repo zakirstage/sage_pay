@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'rake'
-require 'spec/rake/spectask'
+#require 'spec/rake/spectask'
 require 'date'
 
 #############################################################################
