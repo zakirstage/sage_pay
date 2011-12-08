@@ -3,7 +3,7 @@ source :rubygems
 
 gem 'activesupport', '>= 2.3.8'
 #gem 'validatable',   '>= 1.6.7'
-gem "jnunemaker-validatable", :git => 'git://github.com/zakirstage/validatable.git'
+gem "jnunemaker-validatable", :git => 'https://zakirstage@github.com/zakirstage/validatable.git'
 gem 'uuid',          '>= 2.3.1'
 
 group :development do
