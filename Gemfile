@@ -2,7 +2,8 @@
 source :rubygems
 
 gem 'activesupport', '>= 2.3.8'
-gem 'validatable',   '>= 1.6.7'
+#gem 'validatable',   '>= 1.6.7'
+gem "jnunemaker-validatable", "~> 1.8.4"
 gem 'uuid',          '>= 2.3.1'
 
 group :development do
