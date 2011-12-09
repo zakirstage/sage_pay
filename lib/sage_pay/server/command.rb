@@ -59,7 +59,7 @@ module SagePay
       end
 
       def post_params
-        raise ArgumentError, "#{errors.to_s} - Invalid transaction registration options (see errors hash for details)" unless valid?
+        raise ArgumentError, "#{errors.full_messages} - Invalid transaction registration options (see errors hash for details)" unless valid?
 
         {
           "VPSProtocol"        => vps_protocol,
