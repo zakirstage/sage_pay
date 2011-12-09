@@ -1,6 +1,8 @@
+require 'active_model'
 module SagePay
   module Server
     class RefundResponse < Response
+      include ActiveModel::Validations
       attr_accessor_if_ok :vps_tx_id, :tx_auth_no
 
       self.key_converter = key_converter.merge({

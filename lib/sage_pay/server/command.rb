@@ -1,21 +1,22 @@
+require 'active_model'
 module SagePay
   module Server
     class Command
-      include Validatable
-
+      #include Validatable
+      include ActiveModel::Validations
       class_inheritable_accessor :tx_type, :vps_protocol
       self.vps_protocol = "2.23"
 
       attr_accessor :mode, :vendor, :vendor_tx_code
 
-      #validates_presence_of :vps_protocol, :mode, :tx_type, :vendor,
-       # :vendor_tx_code
+      validates_presence_of :vps_protocol, :mode, :tx_type, :vendor,
+        :vendor_tx_code
 
-      #validates_length_of :vps_protocol,     :is      => 4
-      #validates_length_of :vendor,           :maximum => 15
-      #validates_length_of :vendor_tx_code,   :maximum => 40
+      validates_length_of :vps_protocol,     :is      => 4
+      validates_length_of :vendor,           :maximum => 15
+      validates_length_of :vendor_tx_code,   :maximum => 40
 
-      #validates_inclusion_of :mode, :allow_blank => true, :in => [ :simulator, :test, :live ]
+      validates_inclusion_of :mode, :allow_blank => true, :in => [ :simulator, :test, :live ]
 
       def self.decimal_accessor(*attrs)
         attrs.each do |attr|

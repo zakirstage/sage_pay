@@ -1,6 +1,8 @@
+require 'active_model'
 module SagePay
   module Server
     class RegistrationResponse < Response
+      include ActiveModel::Validations
       attr_accessor_if_ok :vps_tx_id, :security_key, :next_url
 
       self.key_converter = key_converter.merge({

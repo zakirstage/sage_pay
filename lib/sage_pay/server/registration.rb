@@ -1,31 +1,33 @@
+require 'active_model'
 module SagePay
   module Server
     class Registration < Command
+      include ActiveModel::Validations
       attr_accessor :currency, :description, :notification_url,
         :billing_address, :delivery_address, :customer_email, :basket,
         :allow_gift_aid, :apply_avs_cv2, :apply_3d_secure, :profile,
         :billing_agreement, :account_type
       decimal_accessor :amount
 
-      #validates_presence_of :amount, :currency, :description,
-      #  :notification_url, :billing_address, :delivery_address
+      validates_presence_of :amount, :currency, :description,
+        :notification_url, :billing_address, :delivery_address
 
-      #validates_length_of :currency,         :is      => 3
-      #validates_length_of :description,      :maximum => 100
-      #validates_length_of :notification_url, :maximum => 255
-      #validates_length_of :customer_email,   :maximum => 255
-      #validates_length_of :basket,           :maximum => 7_500
+      validates_length_of :currency,         :is      => 3
+      validates_length_of :description,      :maximum => 100
+      validates_length_of :notification_url, :maximum => 255
+      validates_length_of :customer_email,   :maximum => 255
+      validates_length_of :basket,           :maximum => 7_500
 
-      #validates_inclusion_of :tx_type,           :allow_blank => true, :in => [ :payment, :deferred, :authenticate ]
-      #validates_inclusion_of :allow_gift_aid,    :allow_blank => true, :in => [ true, false ]
-      #validates_inclusion_of :apply_avs_cv2,     :allow_blank => true, :in => (0..3).to_a
-      #validates_inclusion_of :apply_3d_secure,   :allow_blank => true, :in => (0..3).to_a
-      #validates_inclusion_of :profile,           :allow_blank => true, :in => [:normal, :low]
-      #validates_inclusion_of :billing_agreement, :allow_blank => true, :in => [true, false]
-      #validates_inclusion_of :account_type,      :allow_blank => true, :in => [:ecommerce, :continuous_authority, :mail_order]
+      validates_inclusion_of :tx_type,           :allow_blank => true, :in => [ :payment, :deferred, :authenticate ]
+      validates_inclusion_of :allow_gift_aid,    :allow_blank => true, :in => [ true, false ]
+      validates_inclusion_of :apply_avs_cv2,     :allow_blank => true, :in => (0..3).to_a
+      validates_inclusion_of :apply_3d_secure,   :allow_blank => true, :in => (0..3).to_a
+      validates_inclusion_of :profile,           :allow_blank => true, :in => [:normal, :low]
+      validates_inclusion_of :billing_agreement, :allow_blank => true, :in => [true, false]
+      validates_inclusion_of :account_type,      :allow_blank => true, :in => [:ecommerce, :continuous_authority, :mail_order]
 
-      #validates_true_for :amount, :key => :amount_minimum_value, :logic => lambda { amount.nil? || amount >= BigDecimal.new("0.01")   }, :message => "is less than the minimum value (0.01)"
-      #validates_true_for :amount, :key => :amount_maximum_value, :logic => lambda { amount.nil? || amount <= BigDecimal.new("100000") }, :message => "is greater than the maximum value (100,000.00)"
+      validates_true_for :amount, :key => :amount_minimum_value, :logic => lambda { amount.nil? || amount >= BigDecimal.new("0.01")   }, :message => "is less than the minimum value (0.01)"
+      validates_true_for :amount, :key => :amount_maximum_value, :logic => lambda { amount.nil? || amount <= BigDecimal.new("100000") }, :message => "is greater than the maximum value (100,000.00)"
 
       def run!
         if @response.nil? || (@vendor_tx_code_sent != vendor_tx_code)
