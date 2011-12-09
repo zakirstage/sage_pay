@@ -12,33 +12,33 @@ module SagePay
       attr_accessor :first_names, :surname, :address_1, :address_2, :city,
         :post_code, :country, :state, :phone
 
-      validates_presence_of :first_names, :surname, :address_1, :city, :post_code, :country
+      #validates_presence_of :first_names, :surname, :address_1, :city, :post_code, :country
 
       # FIXME: This regexp isn't correctly matching accented characters. I
       # think it's a Ruby version issue so I'm punting for the moment.
-      validates_format_of :first_names, :surname, :with => /^[[:alpha:] \\\/&'\.\-]*$/
-      validates_format_of :address_1, :address_2, :city, :with => /^[[:alnum:][:space:]\+\\\/&'\.:,\(\)\-]*$/
-      validates_format_of :post_code, :with => /^[[:alnum:] -]*$/
-      validates_format_of :phone, :with => /^[[:alnum:] \+\(\)-]*$/
+      #validates_format_of :first_names, :surname, :with => /^[[:alpha:] \\\/&'\.\-]*$/
+      #validates_format_of :address_1, :address_2, :city, :with => /^[[:alnum:][:space:]\+\\\/&'\.:,\(\)\-]*$/
+      #validates_format_of :post_code, :with => /^[[:alnum:] -]*$/
+      #validates_format_of :phone, :with => /^[[:alnum:] \+\(\)-]*$/
 
-      validates_length_of :first_names, :surname, :maximum => 20
-      validates_length_of :address_1, :address_2, :maximum => 100
-      validates_length_of :city, :maximum => 40
-      validates_length_of :post_code, :maximum => 10
-      validates_length_of :phone, :maximum => 20
+      #validates_length_of :first_names, :surname, :maximum => 20
+      #validates_length_of :address_1, :address_2, :maximum => 100
+      #validates_length_of :city, :maximum => 40
+      #validates_length_of :post_code, :maximum => 10
+      #validates_length_of :phone, :maximum => 20
 
       # While the spec specifies the lengths of these columns, we're
       # validating that they're included in our list, and our list only
       # contains two-character strings, so this validation has no real win.
       # validates_length_of :country, :state, :maximum => 2
 
-      validates_inclusion_of :state,   :in => us_states,              :allow_blank => true, :message => "is not a US state"
-      validates_inclusion_of :country, :in => iso_3166_country_codes, :allow_blank => true, :message => "is not an ISO3166-1 country code"
+      #validates_inclusion_of :state,   :in => us_states,              :allow_blank => true, :message => "is not a US state"
+      #validates_inclusion_of :country, :in => iso_3166_country_codes, :allow_blank => true, :message => "is not an ISO3166-1 country code"
 
       # The state's presence is required if the country is the US, and
       # verboten otherwise.
-      validates_true_for :state, :key => :state_required_in_us, :logic => lambda { in_us? ? state.present? : true }, :message => "is required if the country is US"
-      validates_true_for :state, :key => :verboten_outside_us,  :logic => lambda { in_us? ? true : !state.present? }, :message => "is present but the country is not US"
+      #validates_true_for :state, :key => :state_required_in_us, :logic => lambda { in_us? ? state.present? : true }, :message => "is required if the country is US"
+      #validates_true_for :state, :key => :verboten_outside_us,  :logic => lambda { in_us? ? true : !state.present? }, :message => "is present but the country is not US"
 
       def initialize(attributes = {})
         attributes.each do |k, v|
