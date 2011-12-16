@@ -1,8 +1,6 @@
-require 'active_model'
 module SagePay
   module Server
     class Notification
-      include ActiveModel::Validations
       attr_reader :vps_protocol, :tx_type, :vendor_tx_code, :vps_tx_id,
         :status, :status_detail, :tx_auth_no, :avs_cv2, :address_result,
         :post_code_result, :cv2_result, :gift_aid, :threed_secure_status,
