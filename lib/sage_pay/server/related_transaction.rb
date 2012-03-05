@@ -2,7 +2,6 @@ require 'active_model'
 module SagePay
   module Server
     class RelatedTransaction
-      #include Validatable
       include ActiveModel::Validations
       attr_accessor :vps_tx_id, :vendor_tx_code, :security_key, :tx_auth_no
 
