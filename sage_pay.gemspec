@@ -41,6 +41,7 @@ gateway for accepting credit card payments through your web app.
   #s.add_dependency('validatable',   [">= 1.6.7"])
   s.add_dependency('jnunemaker-validatable')
   s.add_dependency('uuid',          [">= 2.3.0"])
+  s.add_dependency('awesome_print')
 
   ## List your development dependencies here. Development dependencies are
   ## those that are only needed during development
